@@ -8,7 +8,7 @@ function Nav() {
         <h1 className='site-title'>Stranger's Things</h1>
         <ul>
           <li className='active'>
-          <Link to="/">HOME</Link>
+          <Link to="/home">HOME</Link>
           </li>
           <li>
           <Link to="/posts">POSTS</Link>
