@@ -1,0 +1,39 @@
+.mainbody {
+    min-height: 100vh;
+    margin: 2rem;
+}
+
+.itemstitle {
+    font-family: 'Cormorant Upright', serif;
+    line-height: 40px;
+    font-size: 34px;
+    text-align: left;
+}
+
+.posts-section{
+    background-color: black;
+    padding: 20px 10px;
+    margin: 15px 5px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 10px 16px rgba(0,0,0,.3);
+}
+
+
+.button2 {
+    margin-top: 20px;
+}
+@media screen and (max-width: 1150px) {
+    .itemstitle{
+        font: 20px;
+        line-height: 20px;
+        margin: 5px;
+        text-align: left;
+    }
+    .mainbody {
+        margin: 2px;
+        width: 100%;
+    }
+   
+}

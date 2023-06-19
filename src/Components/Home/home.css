@@ -1,6 +1,64 @@
-.home {
+
+.home1 h1 {
+    font-family: 'Cormorant Upright', serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 80px;
+    font-size: 50px;
+}
+
+.header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 4rem 6rem;
+}
+.home1 {
+    width: 100%;
+    display: flex;
     justify-content: center;
-    padding: 0 1rem;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.home1 p {
+    margin: 2rem 0;
+    font-family: 'Open Sasns', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-size: 18px;
+}
+.home2 {
+    margin: 5rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+.home2 img {
+    max-width: 80%;
+    border-radius: 30%;
+ 
+}
+
+@media screen and (max-width: 1150px) {
+  .home2 {
+    margin: 0;
+  }
+  .home1 h1 {
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+  }
+  .home1 p {
+    font-size: 13px;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .home2 img{
+    width: 100%;
+  }
+   
 }

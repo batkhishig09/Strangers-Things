@@ -3,19 +3,21 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 export const fetchPosts = async(token) => {
     try {
-        const response = await fetch(`${BASE_URL}/posts`, {
-            headers: {
-                'Content-Type': 'applicationn/json',
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        const results = await response.json();
-        return results; 
+      const response = await fetch(`${BASE_URL}/posts`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const results = await response.json();
+    //   console.log(results)
+      return results;
     } catch(error) {
-        console.error(error);
+      console.log('fetPosts Error', error)
     }
-};
-//to log in 
+  }
+  
+//No problem with that fetch.
 export const loginUser = async (username, password) => {
     try {
         const response = await fetch(`${BASE_URL}/users/login`, {
@@ -34,7 +36,7 @@ export const loginUser = async (username, password) => {
 
 
 //to create a new user.
-export const createUser = async (username, password) => {
+export const registerUser = async (username, password) => {
     try {
         const response = await fetch(`${BASE_URL}/users/register`, {
             method: 'POST',
@@ -58,7 +60,9 @@ export const getUserDetails = async (token) => {
             },
         })
         const result = await response.json();
+        console.log(result)
         return result;
+      
     } catch(error) {
         console.log(error, 'Error getting users details')
     }
@@ -66,22 +70,31 @@ export const getUserDetails = async (token) => {
 
 //to create new post 
 
-export const createNewPost = async (token, {title, description, location, price, willDeliver}) => {
+export const createNewPost = async (token, {title, description, price, location, willDeliver})=> {
     try {
-        const response = await fetch(`${BASE_URL}/posts`, {
-            method: "Post",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ post: { title, description, location, price, willDeliver}})
+      const response = await fetch(`${BASE_URL}/posts`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          post: {
+            title,
+            description,
+            price,
+            location,
+            willDeliver
+          }
         })
-        const result = await response.json();
-        return result;
-    } catch(error) {
-        console.log(error, "error creating a new post")
+      })
+      
+      const result = await response.json();
+      return result;
+    } catch(ex) {
+      console.log('error creating a new post')
     }
-};
+  }
 
 export const deletePost = async (token, postID) => {
     try {
@@ -99,7 +112,7 @@ export const deletePost = async (token, postID) => {
     }
 }
 
-export const newMessage = async (token, {postID, message}) => {
+export const createMessage = async ({postID, message, token}) => {
     try {
         const response = await fetch (`${BASE_URL}/posts/${postID}/messages`, {
             method: 'POST',
@@ -117,7 +130,7 @@ export const newMessage = async (token, {postID, message}) => {
     }
 }
 
-export const updateYourPost = async ({title, description, price, location, willDeliver, postID, token}) => {
+export const updatePost = async ({title, description, price, location, willDeliver, postID, token}) => {
     try {
         const response = await fetch(`${BASE_URL}/posts/${postID}`, {
             method: "PATCH",

@@ -1,13 +1,64 @@
 import React from 'react'
 import './posts.css'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'; 
+import { useState } from 'react';
+import { deletePost } from '../../Api/api';
+import SearchItems from '../SearchItems/SearchItems'
 
-function Posts() {
+const Posts = ({posts, token,}) => {
+  const reversedPost = posts.reverse()
+  const resultsPosts = Array.from(reversedPost);
+  // console.log(resultsPosts)
+  const [filteredPosts, setFilteredPosts] = useState(resultsPosts);
+
+  async function deletedPost(token, postDelete) {
+    const confirmation = await new Promise((resolve) => {
+      const confirmationDialog = window.confirm("Are you sure you want to delete this post?");
+      resolve(confirmationDialog);
+    });
+  
+    if (confirmation) {
+      const results = await deletePost(token, postDelete);
+      return results;
+    }
+  }
+
   return (
-    <div>
-      <h1> On Posts all the Posts will show up with send message button and also search post or add post as well</h1>
-      <h2>When you click the post You can delete the post or edit the post as you wish</h2>
-       <h2> When you click add new post section it will pop up new form which is "New post form"</h2>
-       <h3> We can send messages to the different posts</h3>
+    <div className='mainbody'>
+     <div className='search-bar'>
+
+<SearchItems posts={posts} setFilteredPosts={setFilteredPosts}/>
+<h2 className='itemstitle'>Items For Sale:</h2>
+     </div>
+     
+     
+     {
+      filteredPosts.map((post) => {
+        const {description, location, price, title, _id, isAuthor} = post;
+        return (
+          <div className="posts-section" key={_id}>
+            <h3>{title}</h3>
+            <p>Description: {description}</p>
+            <p>Price: {price}</p>
+            <p>Location: {location}</p>
+
+            {
+              isAuthor ? (
+                <div className='post-button'>
+                <button> <Link to={`/editpost/${_id}`} className='button2'>Edit</Link></button>
+                <button onClick={() => {deletedPost(token, _id)}} className='button2' >Delete the post</button>
+                </div>
+        ) : (
+          <button className="button2">
+             <Link to={`/singlepost/${_id}`} >View Posts</Link>
+          </button>
+         
+        )
+            }
+          </div>
+        )
+      }) 
+     }
     </div>
   )
 }

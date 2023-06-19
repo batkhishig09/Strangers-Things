@@ -1,10 +1,26 @@
 .footer {
-    background-color: #404040;
-    color: white;
+    background-color: #000000;;
     display: flex;
     align-items: center;
     gap: 2rem;
     padding: 0 1rem;
     margin-top: 2rem;
+    padding-bottom: 1rem;
     justify-content: center;
+}
+.footer-logo svg{
+    color: white;
+    margin: 0.5rem;
+    font-size: 24px;
+    cursor: pointer;
+}
+.footer-logo svg:hover {
+    color: grey;
+}
+@media screen and (max-width: 1150px) {
+    .footer{
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
 }

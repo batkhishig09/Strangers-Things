@@ -1,0 +1,38 @@
+.sendmessage {
+    display: flex;
+    justify-content: flex-start;
+   
+}
+.sendmessage input {
+    width: 40rem;
+    height: 10rem;
+    border-radius: 4px;
+    border: 1px solid black;
+    margin: 10px 0 18px 0;
+    padding: 0 10px;
+    color: black;
+}
+.singlepost {
+    min-height: 100vh;
+}
+.singlepost-title {
+    font-family: 'Cormorant Upright', serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 30px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+.singlepost-information {
+    display: flex;
+    text-align: left;
+    
+}
+.singlepost button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
